@@ -23,5 +23,9 @@ object AppColors {
     val GoogleBlue = Color(0xFF4285F4)
     val FacebookBlue = Color(0xFF1877F2)
     val AppleBlack = Color(0xFF000000)
+    
+    // Для совместимости с Flutter версией
+    val TextPrimary = Color(0xFF000000)
+    val TextSecondary = Color(0xFF666666)
 }
 
