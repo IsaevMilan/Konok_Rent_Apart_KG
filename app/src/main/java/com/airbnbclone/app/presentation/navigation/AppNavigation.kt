@@ -10,6 +10,13 @@ import com.airbnbclone.app.presentation.screens.auth.RegisterScreen
 import com.airbnbclone.app.presentation.screens.auth.VerifyCodeScreen
 import com.airbnbclone.app.presentation.screens.main.MainScreen
 import com.airbnbclone.app.presentation.screens.profile.ProfileScreen
+import com.airbnbclone.app.presentation.screens.messages.MessagesScreen
+import com.airbnbclone.app.presentation.screens.messages.ChatScreen
+import com.airbnbclone.app.presentation.screens.messages.EditMessagesScreen
+import com.airbnbclone.app.presentation.screens.search.FilterScreen
+import com.airbnbclone.app.presentation.screens.listing.ListingScreen
+import com.airbnbclone.app.presentation.screens.map.MapScreen
+import com.airbnbclone.app.presentation.screens.booking.AddCardScreen
 
 @Composable
 fun AppNavigation(
@@ -79,17 +86,14 @@ fun AppNavigation(
         
         // Messages routes
         composable("messages") {
-            // TODO: MessagesScreen
-            MainScreen(navController = navController)
+            MessagesScreen(navController = navController)
         }
         composable("messages/edit") {
-            // TODO: EditMessagesScreen
-            MainScreen(navController = navController)
+            EditMessagesScreen(navController = navController)
         }
         composable("messages/chat/{id}") { backStackEntry ->
-            val chatId = backStackEntry.arguments?.getString("id")
-            // TODO: ChatScreen
-            MainScreen(navController = navController)
+            val chatId = backStackEntry.arguments?.getString("id") ?: ""
+            ChatScreen(navController = navController, chatId = chatId)
         }
         
         // Booking routes
@@ -102,20 +106,18 @@ fun AppNavigation(
             MainScreen(navController = navController)
         }
         composable("booking/add-card") {
-            // TODO: AddCardScreen
-            MainScreen(navController = navController)
+            AddCardScreen(navController = navController)
         }
         
         // Listing routes
         composable("listing/{id}") { backStackEntry ->
-            val listingId = backStackEntry.arguments?.getString("id")
-            // TODO: ListingScreen
-            MainScreen(navController = navController)
+            val listingId = backStackEntry.arguments?.getString("id") ?: ""
+            ListingScreen(navController = navController, listingId = listingId)
         }
         composable("listing/{id}/reviews") { backStackEntry ->
-            val listingId = backStackEntry.arguments?.getString("id")
+            val listingId = backStackEntry.arguments?.getString("id") ?: ""
             // TODO: ReviewsScreen
-            MainScreen(navController = navController)
+            ListingScreen(navController = navController, listingId = listingId)
         }
         
         // Wishlist routes
@@ -134,12 +136,10 @@ fun AppNavigation(
             MainScreen(navController = navController)
         }
         composable("search/filter") {
-            // TODO: FilterScreen
-            MainScreen(navController = navController)
+            FilterScreen(navController = navController)
         }
         composable("map") {
-            // TODO: MapScreen
-            MainScreen(navController = navController)
+            MapScreen(navController = navController)
         }
     }
 }
