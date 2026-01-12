@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ic_launcher_background">#FF5722</color>
+    <string name="app_name">Airbnb Clone</string>
+    <style name="Theme.AirbnbClone" parent="android:Theme.Material.Light.NoActionBar"/>
+</resources>
