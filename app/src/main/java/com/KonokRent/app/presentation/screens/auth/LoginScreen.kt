@@ -1,28 +1,25 @@
 package com.airbnbclone.app.presentation.screens.auth
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Visibility
-import androidx.compose.material.icons.filled.VisibilityOff
-import androidx.compose.material3.*
+
+
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
-import com.airbnbclone.app.presentation.components.AuthLogo
-import com.airbnbclone.app.presentation.components.CustomButton
-import com.airbnbclone.app.presentation.components.CustomTextField
-import com.airbnbclone.app.presentation.components.SocialLoginButton
-import com.airbnbclone.app.presentation.theme.AppColors
+import com.airbnbclone.app.presentation.components.AuthOrnament
+import com.airbnbclone.app.presentation.components.LoginScreenContent
 
-@Composable
+/*@Composable
 fun LoginScreen(
     navController: NavController,
     viewModel: LoginViewModel = hiltViewModel(),
@@ -121,7 +118,7 @@ fun LoginScreen(
         Spacer(modifier = Modifier.height(16.dp))
         
         // Forgot password
-        TextButton(onClick = { /* TODO */ }) {
+        TextButton(onClick = { *//* TODO *//* }) {
             Text("Забыли пароль?")
         }
         
@@ -147,7 +144,7 @@ fun LoginScreen(
         // Social login buttons
         SocialLoginButton(
             text = "Войти через Google",
-            onClick = { /* TODO */ },
+            onClick = { *//* TODO *//* },
             backgroundColor = AppColors.GoogleBlue
         )
         
@@ -155,7 +152,7 @@ fun LoginScreen(
         
         SocialLoginButton(
             text = "Войти через Facebook",
-            onClick = { /* TODO */ },
+            onClick = { *//* TODO *//* },
             backgroundColor = AppColors.FacebookBlue
         )
         
@@ -163,7 +160,7 @@ fun LoginScreen(
         
         SocialLoginButton(
             text = "Войти через Apple",
-            onClick = { /* TODO */ },
+            onClick = { *//* TODO *//* },
             backgroundColor = AppColors.AppleBlack
         )
         
@@ -181,5 +178,40 @@ fun LoginScreen(
             }
         }
     }
+}*/
+
+@Composable
+fun LoginScreen(
+    navController: NavController,
+    viewModel: LoginViewModel = hiltViewModel(),
+    onLoginSuccess: () -> Unit = {}
+) {
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    Box(modifier = Modifier.fillMaxSize()) {
+
+        // 1. Основной контент экрана
+        LoginScreenContent(
+            uiState = uiState,
+            onEmailChange = viewModel::updateEmailOrPhone,
+            onPasswordChange = viewModel::updatePassword,
+            onTogglePassword = viewModel::togglePasswordVisibility,
+            onRememberMe = viewModel::toggleRememberMe,
+            onLoginClick = { viewModel.login(onLoginSuccess) },
+            onRegisterClick = { navController.navigate("auth/register") }
+        )
+
+        // 2. Логотип в "статус-баре"
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .windowInsetsPadding(WindowInsets.statusBars) // Резервирует место под системный статус-бар
+                .height(48.dp), // Стандартная высота статус-бара примерно такая
+            contentAlignment = Alignment.Center
+        ) {
+            // Используем ваш логотип, но уменьшим его, чтобы он влез между иконками
+            AuthOrnament()
+        }
+    }
 }
+
 

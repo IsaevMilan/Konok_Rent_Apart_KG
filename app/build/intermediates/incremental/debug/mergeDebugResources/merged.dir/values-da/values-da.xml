@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string msgid="8719607706653693137" name="androidx_compose_foundation_autofill">"Autofyld"</string>
+    <string msgid="1150566100598813236" name="androidx_compose_ui_autofill">"Autofyld"</string>
     <string msgid="881409763997275156" name="call_notification_answer_action">"Besvar"</string>
     <string msgid="8793775615905189152" name="call_notification_answer_video_action">"Video"</string>
     <string msgid="3229508546291798546" name="call_notification_decline_action">"Afvis"</string>
@@ -72,11 +74,13 @@
     <string msgid="5460405025248574620" name="m3c_tooltip_pane_description">"Værktøjstip"</string>
     <string msgid="542007171693138492" name="navigation_menu">"Navigationsmenu"</string>
     <string msgid="6610465462668679431" name="not_selected">"Ikke valgt"</string>
-    <string msgid="875452955155264703" name="off">"Fra"</string>
-    <string msgid="8655164131929253426" name="on">"Til"</string>
     <string msgid="5941395253238309765" name="range_end">"Slutinterval"</string>
     <string msgid="7097486360902471446" name="range_start">"Startinterval"</string>
     <string msgid="6043586758067023" name="selected">"Valgt"</string>
+    <string msgid="2792228137354697160" name="snackbar_pane_title">"Underretning"</string>
+    <string msgid="4139871816613051306" name="state_empty">"Tom"</string>
+    <string msgid="5834637030682409883" name="state_off">"Fra"</string>
+    <string msgid="1490883874751719580" name="state_on">"Til"</string>
     <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
     <string msgid="2561197295334830845" name="switch_role">"Kontakt"</string>
     <string msgid="1672349317127674378" name="tab">"Fane"</string>

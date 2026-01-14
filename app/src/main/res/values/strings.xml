@@ -1,5 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Airbnb Clone</string>
+
+        <!-- Auth / Login -->
+        <string name="welcome">Добро пожаловать!</string>
+        <string name="email_or_phone">E-mail / номер телефона</string>
+        <string name="password">Пароль</string>
+        <string name="remember_me">Запомнить меня</string>
+        <string name="forgot_password">Забыли пароль?</string>
+        <string name="sign_in">Войти</string>
+        <string name="no_account">Нет аккаунта?</string>
+        <string name="sign_up">Зарегистрироваться</string>
+
+        <!-- Verification -->
+        <string name="enter_verification_code">Введите код подтверждения</string>
+        <string name="verification_code_sent">Мы отправили 6-значный код на +996 XXX XXX</string>
+        <string name="enter_code_below">Введите его ниже, чтобы продолжить.</string>
+        <string name="confirm">Подтвердить</string>
+        <string name="code_not_received">Не пришёл код?</string>
+        <string name="resend_code">Отправить ещё раз</string>
+        <string name="resend_timer">через 30 секунд</string>
+
+        <!-- Registration -->
+        <string name="full_name">ФИО</string>
+        <string name="email">E-mail</string>
+        <string name="phone_number">Номер телефона</string>
+        <string name="create_account">Создайте аккаунт</string>
+        <string name="accept_terms">Я принимаю</string>
+        <string name="terms_of_use">Условия использования</string>
+        <string name="or">или</string>
+        <string name="have_account">Есть аккаунт?</string>
+        <string name="guest">Гость</string>
+
+        <!-- Account / Profile -->
+        <string name="my_account">Мой аккаунт</string>
+        <string name="settings">Настройки</string>
+        <string name="help">Помощь</string>
+        <string name="privacy">Конфиденциальность</string>
+        <string name="logout">Выйти</string>
+        <string name="choose_photo">Выбрать фотографию</string>
+        <string name="full_name_label">Полное имя</string>
+
+        <!-- Personal info -->
+        <string name="gender">Пол</string>
+        <string name="female">Женский</string>
+        <string name="male">Мужской</string>
+
+        <!-- Delete account -->
+        <string name="delete_account_question">Вы хотите удалить аккаунт?</string>
+        <string name="account_delete_warning">Аккаунт будет навсегда потерян</string>
+        <string name="cancel">Отмена</string>
+        <string name="delete">Удалить</string>
+
+        <!-- Security -->
+        <string name="data_access_management">Управление доступом к данным</string>
+        <string name="change_password">Смена пароля</string>
+        <string name="permissions">Разрешения</string>
+        <string name="enter_old_password">Введите старый пароль</string>
+        <string name="enter_new_password">Введите новый пароль</string>
+        <string name="repeat_password">Повторите</string>
+
+        <!-- App settings -->
+        <string name="language">Язык</string>
+        <string name="faq">FAQ</string>
+        <string name="currency">Валюта</string>
+        <string name="contact_support">Связаться с поддержкой</string>
+        <string name="notifications">Уведомления</string>
+        <string name="rental_rules">Правила аренды</string>
+        <string name="theme">Тема</string>
+        <string name="payment_instructions">Инструкции по оплате</string>
+
+        <!-- Permissions -->
+        <string name="geolocation">Геопозиция</string>
+        <string name="always">Всегда</string>
+        <string name="photos">Фото</string>
+        <string name="all_photos">Все фото</string>
+        <string name="microphone">Микрофон</string>
+        <string name="camera">Камера</string>
+
+        <!-- Search / Wishlist -->
+        <string name="search_message_or_user">Найти сообщение или пользователя</string>
+        <string name="wishlists">Вишлисты</string>
+        <string name="board_name">Название доски</string>
+        <string name="added_to_wishlist">Добавлено в вишлист</string>
+        <string name="save_to_wishlist">Сохранить в вишлист</string>
+        <string name="create_board">Создать доску</string>
+
+        <!-- Booking / Payment -->
+        <string name="booking">Бронирование</string>
+        <string name="apple_pay">Apple Pay</string>
+        <string name="google_pay">Google Pay</string>
+        <string name="rental_price">Цена аренды</string>
+        <string name="payment_time">Время платежа</string>
+        <string name="payment_success">Оплата прошла успешно</string>
+        <string name="rate">Поставить оценку</string>
+
+        <!-- Booking details -->
+        <string name="rooms">Комнаты</string>
+        <string name="booking_confirmed">Бронирование подтверждено</string>
+        <string name="main_info">Основная информация</string>
+        <string name="booking_number">Номер бронирования</string>
+        <string name="booking_date">Дата бронирования</string>
+        <string name="client_name">Имя клиента</string>
+        <string name="check_in_date">Дата заезда</string>
+        <string name="check_out_date">Дата выезда</string>
+        <string name="guests">Гости</string>
+        <string name="payment_method">Метод оплаты</string>
+
+        <!-- Trips / Hotels -->
+        <string name="trips">Поездки</string>
+        <string name="cancel_action">Отменить</string>
+        <string name="hotels">Отели</string>
+        <string name="private_hosts">Частные хозяева</string>
+        <string name="resort_areas">Курортные зоны</string>
+        <string name="guest_choice">Выбор гостей</string>
+        <string name="hotel_name">Название отеля</string>
+
+        <!-- Reviews -->
+        <string name="what_did_you_like">Что вам понравилось</string>
+        <string name="location">Местоположение</string>
+        <string name="reviews">Отзывы</string>
+
+        <!-- Filters -->
+        <string name="filter">Фильтр</string>
+        <string name="housing_type">Тип жилья</string>
+        <string name="date">Дата</string>
+        <string name="region_and_city">Регион и город</string>
+        <string name="guest_count">Количество гостей</string>
+        <string name="price_range">Ценовой диапазон</string>
+        <string name="price_1000_som">1000 сом</string>
+        <string name="price_2000_som">2000 сом</string>
+
 </resources>
 

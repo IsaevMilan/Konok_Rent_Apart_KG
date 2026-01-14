@@ -7,16 +7,30 @@ animator fragment_fade_exit
 animator fragment_open_enter
 animator fragment_open_exit
 attr action
+attr activityAction
+attr activityName
 attr alpha
+attr alwaysExpand
+attr animationBackgroundColor
 attr argType
+attr clearTop
 attr data
 attr dataPattern
 attr destination
+attr dragRangeMaxRatio
+attr dragRangeMinRatio
+attr embeddingDividerColor
+attr embeddingDividerType
+attr embeddingDividerWidthDp
 attr enterAnim
 attr exitAnim
+attr finishPrimaryWithPlaceholder
+attr finishPrimaryWithSecondary
+attr finishSecondaryWithPrimary
 attr font
 attr fontProviderAuthority
 attr fontProviderCerts
+attr fontProviderFallbackQuery
 attr fontProviderFetchStrategy
 attr fontProviderFetchTimeout
 attr fontProviderPackage
@@ -26,22 +40,39 @@ attr fontStyle
 attr fontVariationSettings
 attr fontWeight
 attr graph
+attr isDraggingToFullscreenAllowed
 attr lStar
 attr launchSingleTop
 attr mimeType
 attr navGraph
 attr nestedScrollViewStyle
 attr nullable
+attr placeholderActivityName
 attr popEnterAnim
 attr popExitAnim
 attr popUpTo
 attr popUpToInclusive
 attr popUpToSaveState
+attr primaryActivityName
 attr queryPatterns
 attr restoreState
 attr route
+attr secondaryActivityAction
+attr secondaryActivityName
 attr shortcutMatchRequired
+attr splitChangeAnimation
+attr splitCloseAnimation
+attr splitLayoutDirection
+attr splitMaxAspectRatioInLandscape
+attr splitMaxAspectRatioInPortrait
+attr splitMinHeightDp
+attr splitMinSmallestWidthDp
+attr splitMinWidthDp
+attr splitOpenAnimation
+attr splitRatio
 attr startDestination
+attr stickyPlaceholder
+attr tag
 attr targetPackage
 attr ttcIndex
 attr uri
@@ -86,6 +117,7 @@ drawable ic_call_decline_low
 drawable ic_launcher
 drawable ic_launcher_foreground
 drawable ic_launcher_round
+drawable main_logo
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low
@@ -99,6 +131,7 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable top_ornament
 id accessibility_action_clickable_span
 id accessibility_custom_action_0
 id accessibility_custom_action_1
@@ -137,17 +170,30 @@ id action_divider
 id action_image
 id action_text
 id actions
+id adjacent
+id always
+id alwaysAllow
+id alwaysDisallow
 id androidx_compose_ui_view_composition_context
+id androidx_window_activity_scope
 id async
+id auto_clear_focus_behavior_tag
 id blocking
+id bottomToTop
 id chronometer
 id coil_request_manager
+id compose_prefetch_scheduler
 id compose_view_saveable_id_tag
 id consume_window_insets_tag
 id dialog_button
+id draggable
 id edit_text_id
+id fixed
 id forever
 id fragment_container_view_tag
+id ghost_view
+id ghost_view_holder
+id hide_graphics_layer_in_inspector_tag
 id hide_ime_id
 id hide_in_inspector_tag
 id icon
@@ -156,27 +202,38 @@ id info
 id inspection_slot_table_set
 id is_pooling_container_tag
 id italic
+id jumpCut
 id line1
 id line3
+id locale
+id ltr
 id nav_controller_view_tag
+id never
 id normal
 id notification_background
 id notification_main_column
 id notification_main_column_container
+id parent_matrix
 id pooling_container_listener_holder_tag
 id report_drawn
 id right_icon
 id right_side
+id rtl
+id save_non_transition_alpha
+id save_overlay_view
 id special_effects_controller_view_tag
+id systemDefault
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
 id tag_accessibility_heading
 id tag_accessibility_pane_title
+id tag_compat_insets_dispatch
 id tag_on_apply_window_listener
 id tag_on_receive_content_listener
 id tag_on_receive_content_mime_types
 id tag_screen_reader_focusable
 id tag_state_description
+id tag_system_bar_state_monitor
 id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
@@ -185,6 +242,16 @@ id text
 id text2
 id time
 id title
+id topToBottom
+id transition_clip
+id transition_current_scene
+id transition_image_transform
+id transition_layout_save
+id transition_pause_alpha
+id transition_position
+id transition_scene_layoutid_cache
+id transition_transform
+id view_tree_disjoint_parent
 id view_tree_lifecycle_owner
 id view_tree_on_back_pressed_dispatcher_owner
 id view_tree_saved_state_registry_owner
@@ -203,6 +270,8 @@ layout notification_template_part_chronometer
 layout notification_template_part_time
 mipmap ic_launcher
 mipmap ic_launcher_round
+string androidx_compose_foundation_autofill
+string androidx_compose_ui_autofill
 string androidx_startup
 string app_name
 string call_notification_answer_action
@@ -277,11 +346,13 @@ string m3c_tooltip_long_press_label
 string m3c_tooltip_pane_description
 string navigation_menu
 string not_selected
-string off
-string on
 string range_end
 string range_start
 string selected
+string snackbar_pane_title
+string state_empty
+string state_off
+string state_on
 string status_bar_notification_info_overflow
 string switch_role
 string tab
@@ -289,7 +360,6 @@ string template_percent
 string tooltip_description
 string tooltip_label
 style DialogWindowTheme
-style FloatingDialogTheme
 style FloatingDialogWindowTheme
 style TextAppearance_Compat_Notification
 style TextAppearance_Compat_Notification_Info
@@ -299,13 +369,16 @@ style TextAppearance_Compat_Notification_Title
 style Theme_AirbnbClone
 style Widget_Compat_NotificationActionContainer
 style Widget_Compat_NotificationActionText
+styleable ActivityFilter activityAction activityName
 styleable ActivityNavigator android_name action data dataPattern targetPackage
+styleable ActivityRule alwaysExpand tag
 styleable AnimatedStateListDrawableCompat android_dither android_visible android_variablePadding android_constantSize android_enterFadeDuration android_exitFadeDuration
 styleable AnimatedStateListDrawableItem android_id android_drawable
 styleable AnimatedStateListDrawableTransition android_drawable android_toId android_fromId android_reversible
 styleable Capability queryPatterns shortcutMatchRequired
 styleable ColorStateListItem android_color android_alpha android_lStar alpha lStar
-styleable FontFamily fontProviderAuthority fontProviderCerts fontProviderFetchStrategy fontProviderFetchTimeout fontProviderPackage fontProviderQuery fontProviderSystemFontFamily
+styleable DividerAttributes dragRangeMaxRatio dragRangeMinRatio embeddingDividerColor embeddingDividerType embeddingDividerWidthDp isDraggingToFullscreenAllowed
+styleable FontFamily fontProviderAuthority fontProviderCerts fontProviderFallbackQuery fontProviderFetchStrategy fontProviderFetchTimeout fontProviderPackage fontProviderQuery fontProviderSystemFontFamily
 styleable FontFamilyFont android_font android_fontWeight android_fontStyle android_ttcIndex android_fontVariationSettings font fontStyle fontVariationSettings fontWeight ttcIndex
 styleable Fragment android_name android_id android_tag
 styleable FragmentContainerView android_name android_tag
@@ -318,5 +391,8 @@ styleable NavGraphNavigator startDestination
 styleable NavHost navGraph
 styleable NavInclude graph
 styleable Navigator android_label android_id route
+styleable SplitPairFilter primaryActivityName secondaryActivityAction secondaryActivityName
+styleable SplitPairRule animationBackgroundColor clearTop finishPrimaryWithSecondary finishSecondaryWithPrimary splitChangeAnimation splitCloseAnimation splitLayoutDirection splitMaxAspectRatioInLandscape splitMaxAspectRatioInPortrait splitMinHeightDp splitMinSmallestWidthDp splitMinWidthDp splitOpenAnimation splitRatio tag
+styleable SplitPlaceholderRule animationBackgroundColor finishPrimaryWithPlaceholder placeholderActivityName splitChangeAnimation splitCloseAnimation splitLayoutDirection splitMaxAspectRatioInLandscape splitMaxAspectRatioInPortrait splitMinHeightDp splitMinSmallestWidthDp splitMinWidthDp splitOpenAnimation splitRatio stickyPlaceholder tag
 styleable StateListDrawable android_dither android_visible android_variablePadding android_constantSize android_enterFadeDuration android_exitFadeDuration
 styleable StateListDrawableItem android_drawable

@@ -4,6 +4,10 @@
         "source": "com.airbnbclone.app-main-6:/mipmap-xxxhdpi/ic_launcher.xml"
     },
     {
+        "merged": "com.airbnbclone.app-debug-4:/drawable_top_ornament.xml.flat",
+        "source": "com.airbnbclone.app-main-6:/drawable/top_ornament.xml"
+    },
+    {
         "merged": "com.airbnbclone.app-debug-4:/mipmap-mdpi_ic_launcher_round.xml.flat",
         "source": "com.airbnbclone.app-main-6:/mipmap-mdpi/ic_launcher_round.xml"
     },
@@ -30,6 +34,10 @@
     {
         "merged": "com.airbnbclone.app-debug-4:/mipmap-mdpi_ic_launcher.xml.flat",
         "source": "com.airbnbclone.app-main-6:/mipmap-mdpi/ic_launcher.xml"
+    },
+    {
+        "merged": "com.airbnbclone.app-debug-4:/drawable_main_logo.xml.flat",
+        "source": "com.airbnbclone.app-main-6:/drawable/main_logo.xml"
     },
     {
         "merged": "com.airbnbclone.app-debug-4:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",

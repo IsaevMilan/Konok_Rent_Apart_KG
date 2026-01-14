@@ -22,7 +22,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.airbnbclone.app.presentation.components.CustomButton
-import com.airbnbclone.app.presentation.components.CustomTextField
+import com.KonokRent.app.presentation.components.CustomTextField
 import com.airbnbclone.app.presentation.theme.AppColors
 
 @OptIn(ExperimentalMaterial3Api::class)

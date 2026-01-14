@@ -8,7 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import com.airbnbclone.app.presentation.screens.auth.LoginScreen
 import com.airbnbclone.app.presentation.screens.auth.RegisterScreen
 import com.airbnbclone.app.presentation.screens.auth.VerifyCodeScreen
-import com.airbnbclone.app.presentation.screens.main.MainScreen
+import com.KonokRent.app.presentation.screens.main.MainScreen
 import com.airbnbclone.app.presentation.screens.profile.ProfileScreen
 import com.airbnbclone.app.presentation.screens.messages.MessagesScreen
 import com.airbnbclone.app.presentation.screens.messages.ChatScreen

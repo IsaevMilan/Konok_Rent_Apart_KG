@@ -1,4 +1,4 @@
-package com.airbnbclone.app.presentation.theme
+package com.KonokRent.app.presentation.theme
 
 import android.app.Activity
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -10,6 +10,8 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import com.airbnbclone.app.presentation.theme.AppColors
+import com.airbnbclone.app.presentation.theme.Typography
 
 private val DarkColorScheme = darkColorScheme(
     primary = AppColors.Primary,

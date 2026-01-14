@@ -1,10 +1,14 @@
 package com.airbnbclone.app.presentation.components
 
+import android.R.style.Theme
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.airbnbclone.app.presentation.theme.AppColors
 
@@ -20,8 +24,9 @@ fun CustomButton(
 ) {
     Button(
         onClick = onClick,
-        modifier = modifier.height(56.dp),
+        modifier = modifier.fillMaxWidth(),
         enabled = enabled && !isLoading,
+        shape = RoundedCornerShape(6.dp),
         colors = ButtonDefaults.buttonColors(
             containerColor = backgroundColor,
             contentColor = textColor,
@@ -44,3 +49,15 @@ fun CustomButton(
     }
 }
 
+@Preview(showBackground = true)
+@Composable
+fun CustomButtonPreview_CustomColors() {
+    MaterialTheme {
+        CustomButton(
+            text = "Продолжить",
+            onClick = {},
+            backgroundColor = AppColors.Primary,
+            textColor = AppColors.White
+        )
+    }
+}

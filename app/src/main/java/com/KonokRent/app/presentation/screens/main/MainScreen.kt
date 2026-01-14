@@ -1,4 +1,4 @@
-package com.airbnbclone.app.presentation.screens.main
+package com.KonokRent.app.presentation.screens.main
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
@@ -10,49 +10,26 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.airbnbclone.app.presentation.theme.AppColors
+import androidx.navigation.compose.rememberNavController
+import com.KonokRent.app.presentation.components.AirbnbBottomBar
+
+// Убираем старый NavigationBar и вставляем новый компонент
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(navController: NavHostController) {
-    var selectedIndex by remember { mutableIntStateOf(0) }
+    var selectedIndex by remember { mutableIntStateOf(2) } // Поиск по умолчанию
 
     Scaffold(
         bottomBar = {
-            NavigationBar {
-                NavigationBarItem(
-                    icon = { Icon(Icons.Default.Home, contentDescription = "Главная") },
-                    label = { Text("Главная") },
-                    selected = selectedIndex == 0,
-                    onClick = { selectedIndex = 0 }
-                )
-                NavigationBarItem(
-                    icon = { Icon(Icons.Default.Search, contentDescription = "Поиск") },
-                    label = { Text("Поиск") },
-                    selected = selectedIndex == 1,
-                    onClick = { selectedIndex = 1 }
-                )
-                NavigationBarItem(
-                    icon = { Icon(Icons.Default.FavoriteBorder, contentDescription = "Избранное") },
-                    label = { Text("Избранное") },
-                    selected = selectedIndex == 2,
-                    onClick = { selectedIndex = 2 }
-                )
-                NavigationBarItem(
-                    icon = { Icon(Icons.Default.Message, contentDescription = "Сообщения") },
-                    label = { Text("Сообщения") },
-                    selected = selectedIndex == 3,
-                    onClick = { selectedIndex = 3 }
-                )
-                NavigationBarItem(
-                    icon = { Icon(Icons.Default.Person, contentDescription = "Профиль") },
-                    label = { Text("Профиль") },
-                    selected = selectedIndex == 4,
-                    onClick = { selectedIndex = 4 }
-                )
-            }
+            AirbnbBottomBar(
+                selectedIndex = selectedIndex,
+                onItemSelected = { index -> selectedIndex = index }
+            )
         }
     ) { paddingValues ->
         Box(
@@ -61,85 +38,23 @@ fun MainScreen(navController: NavHostController) {
                 .padding(paddingValues)
         ) {
             when (selectedIndex) {
-                0 -> HomeTab(navController)
-                1 -> SearchTab(navController)
-                2 -> WishlistTab(navController)
-                3 -> MessagesTab(navController)
-                4 -> ProfileTab(navController)
+                0 -> Text("Wishlist", modifier = Modifier.padding(16.dp))
+                1 -> Text("Messages", modifier = Modifier.padding(16.dp))
+                2 -> Text("Search", modifier = Modifier.padding(16.dp))
+                3 -> Text("Home", modifier = Modifier.padding(16.dp))
+                4 -> Text("Profile", modifier = Modifier.padding(16.dp))
             }
         }
     }
 }
 
-@Composable
-fun HomeTab(navController: NavHostController) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp)
-    ) {
-        Text(
-            text = "Главная",
-            style = MaterialTheme.typography.headlineMedium
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-        Text("Экран главной страницы будет здесь")
-    }
-}
 
+@Preview(showBackground = true)
 @Composable
-fun SearchTab(navController: NavHostController) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp)
-    ) {
-        Text(
-            text = "Поиск",
-            style = MaterialTheme.typography.headlineMedium
+fun MainScreenPreview() {
+    MaterialTheme {
+        MainScreen(
+            navController = rememberNavController()
         )
     }
 }
-
-@Composable
-fun WishlistTab(navController: NavHostController) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp)
-    ) {
-        Text(
-            text = "Избранное",
-            style = MaterialTheme.typography.headlineMedium
-        )
-    }
-}
-
-@Composable
-fun MessagesTab(navController: NavHostController) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp)
-    ) {
-        Text(
-            text = "Сообщения",
-            style = MaterialTheme.typography.headlineMedium
-        )
-    }
-}
-
-@Composable
-fun ProfileTab(navController: NavHostController) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp)
-    ) {
-        Text(
-            text = "Профиль",
-            style = MaterialTheme.typography.headlineMedium
-        )
-    }
-}
-

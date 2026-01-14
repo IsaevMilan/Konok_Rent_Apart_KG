@@ -4,6 +4,8 @@ color ic_launcher_background
 drawable ic_launcher
 drawable ic_launcher_foreground
 drawable ic_launcher_round
+drawable main_logo
+drawable top_ornament
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name
