@@ -1,4 +1,4 @@
-# Android App - Airbnb Clone
+# Android App - Airbnb Clone в разработке!!
 
 Нативная Android версия приложения на Kotlin.
 
