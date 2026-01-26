@@ -189,7 +189,7 @@ fun LoginScreen(
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     Box(modifier = Modifier.fillMaxSize()) {
 
-        // 1. Основной контент экрана
+
         LoginScreenContent(
             uiState = uiState,
             onEmailChange = viewModel::updateEmailOrPhone,
@@ -200,15 +200,15 @@ fun LoginScreen(
             onRegisterClick = { navController.navigate("auth/register") }
         )
 
-        // 2. Логотип в "статус-баре"
+
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .windowInsetsPadding(WindowInsets.statusBars) // Резервирует место под системный статус-бар
-                .height(48.dp), // Стандартная высота статус-бара примерно такая
+                .windowInsetsPadding(WindowInsets.statusBars)
+                .height(48.dp),
             contentAlignment = Alignment.Center
         ) {
-            // Используем ваш логотип, но уменьшим его, чтобы он влез между иконками
+
             AuthOrnament()
         }
     }

@@ -22,7 +22,6 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -33,7 +32,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.KonokRent.app.presentation.components.CustomTextField
-import com.airbnbclone.app.R
 import com.airbnbclone.app.presentation.screens.auth.LoginUiState
 import com.airbnbclone.app.presentation.theme.AppColors
 
@@ -116,9 +114,9 @@ fun LoginScreenContent(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 0.dp), // убрали лишние паддинги, если нужно прижать к краям
+                .padding(horizontal = 0.dp),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween // разводим по краям
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
             // Левая часть: чекбокс + текст
             Row(
@@ -138,13 +136,13 @@ fun LoginScreenContent(
                 )
             }
 
-            // "Забыли пароль?" кликабельный
+
             Text(
                 text = "Забыли пароль?",
                 style = MaterialTheme.typography.bodyMedium,
                 color = AppColors.Primary,
                 modifier = Modifier.clickable {
-                    //onForgotPasswordClick() // сюда передаём колбэк
+                    //onForgotPasswordClick()
                 }
             )
         }
