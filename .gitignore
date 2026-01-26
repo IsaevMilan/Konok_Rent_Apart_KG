@@ -14,3 +14,73 @@
 .cxx
 local.properties
 
+#ДЛЯ HILT/ANDROID:
+
+### Kotlin ###
+# Kotlin IDE support
+*.kotlin_module
+
+### Hilt/Dagger specific ###
+# KAPT generated sources
+**/build/generated/source/kapt/
+**/build/generated/source/kaptKotlin/
+**/build/generated/data/
+**/build/generated/ap_generated_sources/
+
+# Hilt specific generated files
+**/*Hilt_*.java
+**/*_HiltModules*.java
+**/*_Hilt_*.java
+**/hilt_aggregated_deps/
+**/dagger_aggregated_deps/
+
+# Annotation processing
+**/build/tmp/kapt3/
+**/.kapt/
+
+### Android ###
+# Additional Android Studio files
+/.idea/gradle.xml
+/.idea/compiler.xml
+/.idea/jarRepositories.xml
+/.idea/misc.xml
+/.idea/runConfigurations.xml
+/.idea/vcs.xml
+/.idea/shelf/
+
+# Gradle
+.gradle/
+gradle-app.setting
+
+# Keystores
+*.jks
+*.keystore
+
+# Firebase
+google-services.json
+
+# Crashlytics
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
+
+# Profiling
+*.hprof
+
+# Navigation editor
+/.idea/navigationEditor.xml
+
+# APK files
+*.apk
+*.ap_
+*.aab
+
+# Logs
+*.log
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
