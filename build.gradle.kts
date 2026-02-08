@@ -6,6 +6,7 @@ plugins {
     id("org.jetbrains.kotlin.plugin.serialization") version "2.3.10" apply false  // тоже подними
 }
 
+
 /*buildscript {
     dependencies {
         classpath("com.android.tools.build:gradle:8.6.1")
