@@ -3,10 +3,10 @@ package com.airbnbclone.app.presentation.screens.messages;
 import com.airbnbclone.app.domain.repository.MessageRepository;
 import dagger.internal.DaggerGenerated;
 import dagger.internal.Factory;
+import dagger.internal.Provider;
 import dagger.internal.QualifierMetadata;
 import dagger.internal.ScopeMetadata;
 import javax.annotation.processing.Generated;
-import javax.inject.Provider;
 
 @ScopeMetadata
 @QualifierMetadata
@@ -19,12 +19,15 @@ import javax.inject.Provider;
     "unchecked",
     "rawtypes",
     "KotlinInternal",
-    "KotlinInternalInJava"
+    "KotlinInternalInJava",
+    "cast",
+    "deprecation",
+    "nullness:initialization.field.uninitialized"
 })
 public final class EditMessagesViewModel_Factory implements Factory<EditMessagesViewModel> {
   private final Provider<MessageRepository> messageRepositoryProvider;
 
-  public EditMessagesViewModel_Factory(Provider<MessageRepository> messageRepositoryProvider) {
+  private EditMessagesViewModel_Factory(Provider<MessageRepository> messageRepositoryProvider) {
     this.messageRepositoryProvider = messageRepositoryProvider;
   }
 

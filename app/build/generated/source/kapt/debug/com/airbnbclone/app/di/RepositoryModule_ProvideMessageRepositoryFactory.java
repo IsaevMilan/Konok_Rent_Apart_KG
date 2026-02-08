@@ -19,7 +19,10 @@ import javax.annotation.processing.Generated;
     "unchecked",
     "rawtypes",
     "KotlinInternal",
-    "KotlinInternalInJava"
+    "KotlinInternalInJava",
+    "cast",
+    "deprecation",
+    "nullness:initialization.field.uninitialized"
 })
 public final class RepositoryModule_ProvideMessageRepositoryFactory implements Factory<MessageRepository> {
   @Override
@@ -36,6 +39,6 @@ public final class RepositoryModule_ProvideMessageRepositoryFactory implements F
   }
 
   private static final class InstanceHolder {
-    private static final RepositoryModule_ProvideMessageRepositoryFactory INSTANCE = new RepositoryModule_ProvideMessageRepositoryFactory();
+    static final RepositoryModule_ProvideMessageRepositoryFactory INSTANCE = new RepositoryModule_ProvideMessageRepositoryFactory();
   }
 }

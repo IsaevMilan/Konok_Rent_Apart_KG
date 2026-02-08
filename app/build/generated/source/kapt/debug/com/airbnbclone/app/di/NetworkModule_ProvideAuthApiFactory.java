@@ -4,11 +4,11 @@ import com.airbnbclone.app.data.remote.api.AuthApi;
 import dagger.internal.DaggerGenerated;
 import dagger.internal.Factory;
 import dagger.internal.Preconditions;
+import dagger.internal.Provider;
 import dagger.internal.QualifierMetadata;
 import dagger.internal.ScopeMetadata;
 import io.ktor.client.HttpClient;
 import javax.annotation.processing.Generated;
-import javax.inject.Provider;
 
 @ScopeMetadata("javax.inject.Singleton")
 @QualifierMetadata
@@ -21,12 +21,15 @@ import javax.inject.Provider;
     "unchecked",
     "rawtypes",
     "KotlinInternal",
-    "KotlinInternalInJava"
+    "KotlinInternalInJava",
+    "cast",
+    "deprecation",
+    "nullness:initialization.field.uninitialized"
 })
 public final class NetworkModule_ProvideAuthApiFactory implements Factory<AuthApi> {
   private final Provider<HttpClient> clientProvider;
 
-  public NetworkModule_ProvideAuthApiFactory(Provider<HttpClient> clientProvider) {
+  private NetworkModule_ProvideAuthApiFactory(Provider<HttpClient> clientProvider) {
     this.clientProvider = clientProvider;
   }
 

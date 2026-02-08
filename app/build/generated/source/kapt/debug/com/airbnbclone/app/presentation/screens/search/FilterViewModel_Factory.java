@@ -17,7 +17,10 @@ import javax.annotation.processing.Generated;
     "unchecked",
     "rawtypes",
     "KotlinInternal",
-    "KotlinInternalInJava"
+    "KotlinInternalInJava",
+    "cast",
+    "deprecation",
+    "nullness:initialization.field.uninitialized"
 })
 public final class FilterViewModel_Factory implements Factory<FilterViewModel> {
   @Override
@@ -34,6 +37,6 @@ public final class FilterViewModel_Factory implements Factory<FilterViewModel> {
   }
 
   private static final class InstanceHolder {
-    private static final FilterViewModel_Factory INSTANCE = new FilterViewModel_Factory();
+    static final FilterViewModel_Factory INSTANCE = new FilterViewModel_Factory();
   }
 }

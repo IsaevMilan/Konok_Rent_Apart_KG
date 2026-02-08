@@ -3,10 +3,10 @@ package com.airbnbclone.app.presentation.screens.main;
 import com.airbnbclone.app.domain.repository.ListingRepository;
 import dagger.internal.DaggerGenerated;
 import dagger.internal.Factory;
+import dagger.internal.Provider;
 import dagger.internal.QualifierMetadata;
 import dagger.internal.ScopeMetadata;
 import javax.annotation.processing.Generated;
-import javax.inject.Provider;
 
 @ScopeMetadata
 @QualifierMetadata
@@ -19,12 +19,15 @@ import javax.inject.Provider;
     "unchecked",
     "rawtypes",
     "KotlinInternal",
-    "KotlinInternalInJava"
+    "KotlinInternalInJava",
+    "cast",
+    "deprecation",
+    "nullness:initialization.field.uninitialized"
 })
 public final class MainViewModel_Factory implements Factory<MainViewModel> {
   private final Provider<ListingRepository> listingRepositoryProvider;
 
-  public MainViewModel_Factory(Provider<ListingRepository> listingRepositoryProvider) {
+  private MainViewModel_Factory(Provider<ListingRepository> listingRepositoryProvider) {
     this.listingRepositoryProvider = listingRepositoryProvider;
   }
 

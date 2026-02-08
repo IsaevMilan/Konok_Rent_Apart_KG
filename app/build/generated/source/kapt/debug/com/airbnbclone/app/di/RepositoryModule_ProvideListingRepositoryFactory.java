@@ -19,7 +19,10 @@ import javax.annotation.processing.Generated;
     "unchecked",
     "rawtypes",
     "KotlinInternal",
-    "KotlinInternalInJava"
+    "KotlinInternalInJava",
+    "cast",
+    "deprecation",
+    "nullness:initialization.field.uninitialized"
 })
 public final class RepositoryModule_ProvideListingRepositoryFactory implements Factory<ListingRepository> {
   @Override
@@ -36,6 +39,6 @@ public final class RepositoryModule_ProvideListingRepositoryFactory implements F
   }
 
   private static final class InstanceHolder {
-    private static final RepositoryModule_ProvideListingRepositoryFactory INSTANCE = new RepositoryModule_ProvideListingRepositoryFactory();
+    static final RepositoryModule_ProvideListingRepositoryFactory INSTANCE = new RepositoryModule_ProvideListingRepositoryFactory();
   }
 }

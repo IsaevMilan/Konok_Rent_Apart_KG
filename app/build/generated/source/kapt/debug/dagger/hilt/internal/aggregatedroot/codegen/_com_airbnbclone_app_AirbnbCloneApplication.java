@@ -13,8 +13,10 @@ import javax.annotation.processing.Generated;
     originatingRoot = "com.airbnbclone.app.AirbnbCloneApplication",
     originatingRootPackage = "com.airbnbclone.app",
     rootAnnotation = HiltAndroidApp.class,
+    rootComponentPackage = "dagger.hilt.components",
     rootSimpleNames = "AirbnbCloneApplication",
-    originatingRootSimpleNames = "AirbnbCloneApplication"
+    originatingRootSimpleNames = "AirbnbCloneApplication",
+    rootComponentSimpleNames = "SingletonComponent"
 )
 @Generated("dagger.hilt.processor.internal.root.AggregatedRootGenerator")
 public class _com_airbnbclone_app_AirbnbCloneApplication {

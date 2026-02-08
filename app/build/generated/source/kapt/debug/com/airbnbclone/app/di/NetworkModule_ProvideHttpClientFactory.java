@@ -19,7 +19,10 @@ import javax.annotation.processing.Generated;
     "unchecked",
     "rawtypes",
     "KotlinInternal",
-    "KotlinInternalInJava"
+    "KotlinInternalInJava",
+    "cast",
+    "deprecation",
+    "nullness:initialization.field.uninitialized"
 })
 public final class NetworkModule_ProvideHttpClientFactory implements Factory<HttpClient> {
   @Override
@@ -36,6 +39,6 @@ public final class NetworkModule_ProvideHttpClientFactory implements Factory<Htt
   }
 
   private static final class InstanceHolder {
-    private static final NetworkModule_ProvideHttpClientFactory INSTANCE = new NetworkModule_ProvideHttpClientFactory();
+    static final NetworkModule_ProvideHttpClientFactory INSTANCE = new NetworkModule_ProvideHttpClientFactory();
   }
 }

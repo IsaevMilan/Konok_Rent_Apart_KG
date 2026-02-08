@@ -17,7 +17,10 @@ import javax.annotation.processing.Generated;
     "unchecked",
     "rawtypes",
     "KotlinInternal",
-    "KotlinInternalInJava"
+    "KotlinInternalInJava",
+    "cast",
+    "deprecation",
+    "nullness:initialization.field.uninitialized"
 })
 public final class AddCardViewModel_Factory implements Factory<AddCardViewModel> {
   @Override
@@ -34,6 +37,6 @@ public final class AddCardViewModel_Factory implements Factory<AddCardViewModel>
   }
 
   private static final class InstanceHolder {
-    private static final AddCardViewModel_Factory INSTANCE = new AddCardViewModel_Factory();
+    static final AddCardViewModel_Factory INSTANCE = new AddCardViewModel_Factory();
   }
 }

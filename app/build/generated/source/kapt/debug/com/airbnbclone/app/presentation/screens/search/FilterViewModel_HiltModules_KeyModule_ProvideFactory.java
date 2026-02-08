@@ -2,7 +2,6 @@ package com.airbnbclone.app.presentation.screens.search;
 
 import dagger.internal.DaggerGenerated;
 import dagger.internal.Factory;
-import dagger.internal.Preconditions;
 import dagger.internal.QualifierMetadata;
 import dagger.internal.ScopeMetadata;
 import javax.annotation.processing.Generated;
@@ -18,11 +17,14 @@ import javax.annotation.processing.Generated;
     "unchecked",
     "rawtypes",
     "KotlinInternal",
-    "KotlinInternalInJava"
+    "KotlinInternalInJava",
+    "cast",
+    "deprecation",
+    "nullness:initialization.field.uninitialized"
 })
-public final class FilterViewModel_HiltModules_KeyModule_ProvideFactory implements Factory<String> {
+public final class FilterViewModel_HiltModules_KeyModule_ProvideFactory implements Factory<Boolean> {
   @Override
-  public String get() {
+  public Boolean get() {
     return provide();
   }
 
@@ -30,11 +32,11 @@ public final class FilterViewModel_HiltModules_KeyModule_ProvideFactory implemen
     return InstanceHolder.INSTANCE;
   }
 
-  public static String provide() {
-    return Preconditions.checkNotNullFromProvides(FilterViewModel_HiltModules.KeyModule.provide());
+  public static boolean provide() {
+    return FilterViewModel_HiltModules.KeyModule.provide();
   }
 
   private static final class InstanceHolder {
-    private static final FilterViewModel_HiltModules_KeyModule_ProvideFactory INSTANCE = new FilterViewModel_HiltModules_KeyModule_ProvideFactory();
+    static final FilterViewModel_HiltModules_KeyModule_ProvideFactory INSTANCE = new FilterViewModel_HiltModules_KeyModule_ProvideFactory();
   }
 }

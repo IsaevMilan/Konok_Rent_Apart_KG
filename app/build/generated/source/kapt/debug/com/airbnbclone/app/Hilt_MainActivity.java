@@ -1,8 +1,11 @@
 package com.airbnbclone.app;
 
 import android.content.Context;
+import android.os.Bundle;
 import androidx.activity.ComponentActivity;
 import androidx.activity.contextaware.OnContextAvailableListener;
+import androidx.annotation.CallSuper;
+import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 import dagger.hilt.android.internal.lifecycle.DefaultViewModelFactories;
 import dagger.hilt.android.internal.managers.ActivityComponentManager;
@@ -40,6 +43,23 @@ public abstract class Hilt_MainActivity extends ComponentActivity implements Gen
         inject();
       }
     });
+  }
+
+  private void initSavedStateHandleHolders() {
+    componentManager().initSavedStateHandleHolders();
+  }
+
+  @CallSuper
+  @Override
+  protected void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    initSavedStateHandleHolders();
+  }
+
+  @Override
+  protected void onDestroy() {
+    super.onDestroy();
+    componentManager().clearSavedStateHandleHolders();
   }
 
   @Override

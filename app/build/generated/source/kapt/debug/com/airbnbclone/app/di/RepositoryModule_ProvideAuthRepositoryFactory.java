@@ -19,7 +19,10 @@ import javax.annotation.processing.Generated;
     "unchecked",
     "rawtypes",
     "KotlinInternal",
-    "KotlinInternalInJava"
+    "KotlinInternalInJava",
+    "cast",
+    "deprecation",
+    "nullness:initialization.field.uninitialized"
 })
 public final class RepositoryModule_ProvideAuthRepositoryFactory implements Factory<AuthRepository> {
   @Override
@@ -36,6 +39,6 @@ public final class RepositoryModule_ProvideAuthRepositoryFactory implements Fact
   }
 
   private static final class InstanceHolder {
-    private static final RepositoryModule_ProvideAuthRepositoryFactory INSTANCE = new RepositoryModule_ProvideAuthRepositoryFactory();
+    static final RepositoryModule_ProvideAuthRepositoryFactory INSTANCE = new RepositoryModule_ProvideAuthRepositoryFactory();
   }
 }
