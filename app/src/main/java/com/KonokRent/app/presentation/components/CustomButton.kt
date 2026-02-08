@@ -26,7 +26,7 @@ fun CustomButton(
         onClick = onClick,
         modifier = modifier.fillMaxWidth(),
         enabled = enabled && !isLoading,
-        shape = RoundedCornerShape(6.dp),
+        shape = RoundedCornerShape(10.dp),
         colors = ButtonDefaults.buttonColors(
             containerColor = backgroundColor,
             contentColor = textColor,
@@ -54,9 +54,22 @@ fun CustomButton(
 fun CustomButtonPreview_CustomColors() {
     MaterialTheme {
         CustomButton(
-            text = "Продолжить",
+            text = "Введите текст",
             onClick = {},
             backgroundColor = AppColors.Primary,
+            textColor = AppColors.White
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun CustomButtonPreview2_CustomColors() {
+    MaterialTheme {
+        CustomButton(
+            text = "Введите текст",
+            onClick = {},
+            backgroundColor = AppColors.Grey,
             textColor = AppColors.White
         )
     }

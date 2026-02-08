@@ -5,7 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.airbnbclone.app.presentation.screens.auth.LoginScreen
+import com.KonokRent.app.presentation.screens.auth.LoginScreen
 import com.airbnbclone.app.presentation.screens.auth.RegisterScreen
 import com.airbnbclone.app.presentation.screens.auth.VerifyCodeScreen
 import com.KonokRent.app.presentation.screens.main.MainScreen
@@ -21,7 +21,7 @@ import com.airbnbclone.app.presentation.screens.booking.AddCardScreen
 @Composable
 fun AppNavigation(
     navController: NavHostController = rememberNavController(),
-    startDestination: String = "main"
+    startDestination: String = "auth/login"
 ) {
     NavHost(
         navController = navController,
