@@ -57,101 +57,112 @@ fun ProfileScreen(
         }
     ) { paddingValues ->
         if (uiState.isLoading) {
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(paddingValues),
-                contentAlignment = Alignment.Center
-            ) {
-                CircularProgressIndicator()
-            }
-        } else {
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(paddingValues),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                item {
-                    Spacer(modifier = Modifier.height(32.dp))
-                    
-                    Box {
+            Box(modifier = Modifier.fillMaxSize()) {
+
+                Image(
+                    painter = painterResource(id = R.drawable.ornament_prifile_backgraund),
+                    contentDescription = null,
+                    modifier = Modifier.fillMaxWidth(),
+                    contentScale = ContentScale.Crop
+                )
+
+                Column(
+                    modifier = Modifier.fillMaxSize(),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+
+                    Spacer(modifier = Modifier.height(108.dp))
+
+                    // Аватар
+                    Box(
+                        modifier = Modifier
+                            .padding(bottom = 8.dp)
+                            .size(102.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
                         Surface(
-                            modifier = Modifier.size(120.dp),
+                            modifier = Modifier.size(102.dp),
                             shape = CircleShape,
                             color = AppColors.LightGrey
                         ) {
-                            Box(contentAlignment = Alignment.Center) {
-                                Icon(
-                                    Icons.Default.Person,
-                                    contentDescription = null,
-                                    modifier = Modifier.size(60.dp),
-                                    tint = AppColors.Grey
-                                )
-                            }
                         }
+
+                        // кнопка редактирования
                         FloatingActionButton(
                             onClick = { /* TODO */ },
                             modifier = Modifier
                                 .align(Alignment.BottomEnd)
-                                .size(40.dp)
-                                .offset(x = (-8).dp, y = (-8).dp),
-                            containerColor = AppColors.Primary,
-                        ) {
-                            Icon(Icons.Default.CameraAlt, contentDescription = null)
+                                .size(32.dp)
+                                .offset(x = -2.dp, y = 2.dp),
+
+                            ) {
+                            Image(
+                                painter = painterResource(id = R.drawable.icon_pencil),
+                                contentDescription = null,
+                            )
                         }
                     }
-                    
-                    Spacer(modifier = Modifier.height(24.dp))
-                    
-                    Text(
-                        text = uiState.user?.name ?: "Пользователь",
-                        style = MaterialTheme.typography.headlineMedium,
-                        color = AppColors.TextPrimary
-                    )
-                    
-                    Spacer(modifier = Modifier.height(8.dp))
-                    
-                    Text(
-                        text = uiState.user?.email ?: "",
-                        style = MaterialTheme.typography.bodyLarge,
-                        color = AppColors.TextSecondary
-                    )
-                    
-                    Spacer(modifier = Modifier.height(40.dp))
-                }
-                
-                item {
-                    ProfileMenuItem(
-                        icon = painterResource(id = R.drawable.icon_pencil),
-                        title = "Конфиденциальность",
-                        onClick = { navController.navigate("profile/privacy") }
-                    )
-                    Divider(modifier = Modifier.padding(start = 64.dp))
-                    ProfileMenuItem(
-                        icon = painterResource(id = R.drawable.icon_pencil),
-                        title = "Мой аккаунт",
-                        onClick = { navController.navigate("profile/account") }
-                    )
-                    Divider(modifier = Modifier.padding(start = 64.dp))
-                    ProfileMenuItem(
-                        icon = painterResource(id = R.drawable.icon_pencil),
-                        title = "Настройки",
-                        onClick = { navController.navigate("profile/settings") }
-                    )
-                    Divider(modifier = Modifier.padding(start = 64.dp))
-                    ProfileMenuItem(
-                        icon = painterResource(id = R.drawable.icon_pencil),
-                        title = "Смена пароля",
-                        onClick = { navController.navigate("profile/change-password") }
-                    )
-                    Divider(modifier = Modifier.padding(start = 64.dp))
-                    ProfileMenuItem(
-                        icon = painterResource(id = R.drawable.icons_door),
-                        title = "Выйти",
-                        onClick = { navController.navigate("profile/permissions") }
-                    )
-                    Spacer(modifier = Modifier.height(32.dp))
+
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(364.dp)
+                            .padding(horizontal = 22.dp)
+                            .offset(y = (-38).dp)
+                    ) {
+                        // Твой фон карточки
+                        Image(
+                            painter = painterResource(id = R.drawable.profile_background),
+                            contentDescription = null,
+                            modifier = Modifier.fillMaxWidth(),
+                            contentScale = ContentScale.Crop
+                        )
+
+                        Column(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .offset(y = -32.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            Spacer(modifier = Modifier.height(98.dp))
+                            Text(
+                                text = "Пользователь",
+                                style = MaterialTheme.typography.headlineMedium,
+                                color = AppColors.TextPrimary
+                            )
+
+                            Spacer(modifier = Modifier.height(8.dp))
+
+                            Text(
+                                text = "Гость",
+                                style = MaterialTheme.typography.bodyLarge,
+                                color = AppColors.TextSecondary
+                            )
+
+                            Spacer(modifier = Modifier.height(40.dp))
+
+                            ProfileMenuItem(
+                                icon = painterResource(R.drawable.icon_user),
+                                title = "Мой аккаунт",
+                                onClick = {})
+                            ProfileMenuItem(
+                                icon = painterResource(R.drawable.icons_door),
+                                title = "Настройки",
+                                onClick = {})
+                            ProfileMenuItem(
+                                icon = painterResource(R.drawable.question_circle),
+                                title = "Помощь",
+                                onClick = {})
+                            ProfileMenuItem(
+                                icon = painterResource(R.drawable.shield_user),
+                                title = "Конфиденциальность",
+                                onClick = {})
+                            ProfileMenuItem(
+                                icon = painterResource(R.drawable.icons_door),
+                                title = "Выйти",
+                                onClick = {})
+                        }
+                    }
                 }
             }
         }
