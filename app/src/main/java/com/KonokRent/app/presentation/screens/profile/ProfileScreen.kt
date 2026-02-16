@@ -1,19 +1,42 @@
 package com.airbnbclone.app.presentation.screens.profile
 
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowRight
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.KonokRent.app.presentation.components.CircularLogo
+import com.KonokRent.app.presentation.theme.AirbnbCloneTheme
+import com.airbnbclone.app.R
+import com.airbnbclone.app.domain.entities.User
 import com.airbnbclone.app.presentation.theme.AppColors
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.stateIn
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -55,7 +78,7 @@ fun ProfileScreen(
                     Box {
                         Surface(
                             modifier = Modifier.size(120.dp),
-                            shape = androidx.compose.foundation.shape.CircleShape,
+                            shape = CircleShape,
                             color = AppColors.LightGrey
                         ) {
                             Box(contentAlignment = Alignment.Center) {
@@ -100,38 +123,32 @@ fun ProfileScreen(
                 
                 item {
                     ProfileMenuItem(
-                        icon = Icons.Default.Edit,
-                        title = "Редактировать профиль",
-                        onClick = { navController.navigate("profile/edit") }
-                    )
-                    Divider(modifier = Modifier.padding(start = 64.dp))
-                    ProfileMenuItem(
-                        icon = Icons.Default.Lock,
+                        icon = painterResource(id = R.drawable.icon_pencil),
                         title = "Конфиденциальность",
                         onClick = { navController.navigate("profile/privacy") }
                     )
                     Divider(modifier = Modifier.padding(start = 64.dp))
                     ProfileMenuItem(
-                        icon = Icons.Default.AccountCircle,
+                        icon = painterResource(id = R.drawable.icon_pencil),
                         title = "Мой аккаунт",
                         onClick = { navController.navigate("profile/account") }
                     )
                     Divider(modifier = Modifier.padding(start = 64.dp))
                     ProfileMenuItem(
-                        icon = Icons.Default.Settings,
+                        icon = painterResource(id = R.drawable.icon_pencil),
                         title = "Настройки",
                         onClick = { navController.navigate("profile/settings") }
                     )
                     Divider(modifier = Modifier.padding(start = 64.dp))
                     ProfileMenuItem(
-                        icon = Icons.Default.Security,
+                        icon = painterResource(id = R.drawable.icon_pencil),
                         title = "Смена пароля",
                         onClick = { navController.navigate("profile/change-password") }
                     )
                     Divider(modifier = Modifier.padding(start = 64.dp))
                     ProfileMenuItem(
-                        icon = Icons.Default.AdminPanelSettings,
-                        title = "Разрешения",
+                        icon = painterResource(id = R.drawable.icons_door),
+                        title = "Выйти",
                         onClick = { navController.navigate("profile/permissions") }
                     )
                     Spacer(modifier = Modifier.height(32.dp))
@@ -143,21 +160,20 @@ fun ProfileScreen(
 
 @Composable
 fun ProfileMenuItem(
-    icon: androidx.compose.ui.graphics.vector.ImageVector,
+    icon: Painter,
     title: String,
     onClick: () -> Unit
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 24.dp, vertical = 16.dp)
+            .padding(vertical = 8.dp, horizontal = 20.dp)
             .clickable { onClick() },
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
-            imageVector = icon,
+            painter = icon,
             contentDescription = null,
-            tint = AppColors.TextPrimary,
             modifier = Modifier.size(24.dp)
         )
         Spacer(modifier = Modifier.width(16.dp))
@@ -174,3 +190,120 @@ fun ProfileMenuItem(
         )
     }
 }
+
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ProfileScreenContent() {
+
+    Box(modifier = Modifier.fillMaxSize()) {
+
+        Image(
+            painter = painterResource(id = R.drawable.ornament_prifile_backgraund),
+            contentDescription = null,
+            modifier = Modifier.fillMaxWidth(),
+            contentScale = ContentScale.Crop
+        )
+
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+
+            Spacer(modifier = Modifier.height(108.dp))
+
+            // Аватар
+            Box(
+                modifier = Modifier
+                    .padding(bottom = 8.dp)
+                    .size(102.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Surface(
+                    modifier = Modifier.size(102.dp),
+                    shape = CircleShape,
+                    color = AppColors.LightGrey
+                ) {
+                }
+
+                // кнопка редактирования
+                FloatingActionButton(
+                    onClick = { /* TODO */ },
+                    modifier = Modifier
+                        .align(Alignment.BottomEnd)
+                        .size(32.dp)
+                        .offset(x = -2.dp, y = 2.dp),
+
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.icon_pencil),
+                        contentDescription = null,
+                    )
+                }
+            }
+
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(364.dp)
+                    .padding(horizontal = 22.dp)
+                    .offset(y = (-38).dp)
+            ) {
+                // Твой фон карточки
+                Image(
+                    painter = painterResource(id = R.drawable.profile_background),
+                    contentDescription = null,
+                    modifier = Modifier.fillMaxWidth(),
+                    contentScale = ContentScale.Crop
+                )
+
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .offset( y=-32.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Spacer(modifier = Modifier.height(98.dp))
+                    Text(
+                        text = "Пользователь",
+                        style = MaterialTheme.typography.headlineMedium,
+                        color = AppColors.TextPrimary
+                    )
+
+                    Spacer(modifier = Modifier.height(8.dp))
+
+                    Text(
+                        text = "Гость",
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = AppColors.TextSecondary
+                    )
+
+                    Spacer(modifier = Modifier.height(40.dp))
+
+                    ProfileMenuItem(icon = painterResource(R.drawable.icon_user), title = "Мой аккаунт", onClick = {})
+                    ProfileMenuItem(icon = painterResource(R.drawable.icons_door), title = "Настройки", onClick = {})
+                    ProfileMenuItem(icon = painterResource(R.drawable.question_circle), title = "Помощь", onClick = {})
+                    ProfileMenuItem(icon = painterResource(R.drawable.shield_user), title = "Конфиденциальность", onClick = {})
+                    ProfileMenuItem(icon = painterResource(R.drawable.icons_door), title = "Выйти", onClick = {})
+                }
+            }
+        }
+    }
+}
+
+
+@Composable
+@Preview(showBackground = true)
+fun ProfileScreenPreview() {
+    AirbnbCloneTheme {
+        ProfileScreenContent(
+
+
+        )
+    }
+}
+
+
+
+
+

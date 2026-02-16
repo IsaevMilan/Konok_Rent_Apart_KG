@@ -11,7 +11,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -19,12 +21,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.airbnbclone.app.R
+import com.airbnbclone.app.presentation.theme.AppColors
 import kotlin.math.sin
 
 
@@ -86,4 +92,63 @@ fun LoadingScreen() {
 
 fun LoadingScreenPreview() {
     LoadingScreen()
+}
+
+
+@Composable
+fun CircularLogo(
+    modifier: Modifier = Modifier
+) {
+    val infiniteTransition = rememberInfiniteTransition()
+
+    val rotY by infiniteTransition.animateFloat(
+        initialValue = 0f,
+        targetValue = 360f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(3000, easing = LinearEasing)
+        )
+    )
+
+    Box(
+        modifier = Modifier
+            .wrapContentSize(Alignment.Center),
+        contentAlignment = Alignment.Center
+    ) {
+        // Отбрасывание тени
+        Box(
+            modifier = Modifier
+                .size(50.dp)
+                .offset(y = 40.dp)
+        )
+
+        Image(
+            painter = painterResource(id = R.drawable.main_logo),
+            contentDescription = "Advanced Loading",
+            modifier = Modifier
+                .size(100.dp)
+                .graphicsLayer {
+                    //задаем вращение по осям rotationY или Z,X
+                    rotationY = rotY
+                    // Добавляем перспективу для 3D
+                    cameraDistance = 10f * density
+                    // Легкое искажение при вращении
+                    transformOrigin = TransformOrigin(0.5f, 0.5f)
+                    scaleX = 1f + sin(Math.toRadians(rotY.toDouble())).toFloat() * 0.2f
+
+                }
+
+        )
+    }
+}
+
+
+@Preview (showBackground = true )
+@Composable
+fun CircularLogoPreview() {
+    CircularLogo()
+}
+
+@Composable
+fun Button(){
+    
 }
