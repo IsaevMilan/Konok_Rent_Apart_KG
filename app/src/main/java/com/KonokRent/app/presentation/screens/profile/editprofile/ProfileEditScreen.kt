@@ -1,7 +1,9 @@
 package com.KonokRent.app.presentation.screens.profile.editprofile
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -14,18 +16,20 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ChevronRight
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FloatingActionButton
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -34,158 +38,152 @@ import com.KonokRent.app.presentation.theme.AirbnbCloneTheme
 import com.airbnbclone.app.R
 import com.airbnbclone.app.presentation.theme.AppColors
 
-
-
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfileEditScreen() {
-
     Box(modifier = Modifier.fillMaxSize()) {
 
+        // Фон-орнамент сверху
         Image(
             painter = painterResource(id = R.drawable.ornament_prifile_backgraund),
             contentDescription = null,
-            modifier = Modifier.fillMaxWidth(),
-            contentScale = ContentScale.Crop
+            modifier = Modifier
+                .fillMaxWidth()
+                .align(Alignment.TopCenter),
+            contentScale = ContentScale.FillWidth
         )
+        // Кнопки назад и сохранить — в углах экрана
+        IconButton(
+            onClick = { /* назад */ },
+            modifier = Modifier
+                .align(Alignment.TopStart)
+                .padding(top = 16.dp, start = 16.dp)
+                .size(48.dp)
+        ) {
+            Icon(
+                painter = painterResource(id = R.drawable.ic_arrow_back),
+                contentDescription = "Назад",
+                tint = Color.Unspecified  // ← убираем tint, иконка будет как в файле
+            )
+        }
 
+        // Кнопка сохранить — справа сверху, без фона
+        IconButton(
+            onClick = { /* сохранить */ },
+            modifier = Modifier
+                .align(Alignment.TopEnd)
+                .padding(top = 16.dp, end = 16.dp)
+                .size(48.dp)
+        ) {
+            Icon(
+                painter = painterResource(id = R.drawable.ic_done),
+                contentDescription = "Сохранить",
+                tint = Color.Unspecified  // ← как есть, без перекрашивания
+            )
+        }
+
+        // Основной контент
         Column(
             modifier = Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Spacer(modifier = Modifier.height(108.dp))  // отступ под орнамент + кнопки
 
-            Spacer(modifier = Modifier.height(108.dp))
-
-            // Аватар
-            Box(
-                modifier = Modifier
-                    .padding(bottom = 8.dp)
-                    .size(102.dp),
-                contentAlignment = Alignment.Center
-            ) {
-                Surface(
-                    modifier = Modifier.size(102.dp),
-                    shape = CircleShape,
-                    color = AppColors.LightGrey
-                ) {
-                }
-
-                // кнопка редактирования
-                FloatingActionButton(
-                    onClick = { /* TODO */ },
-                    modifier = Modifier
-                        .align(Alignment.BottomEnd)
-                        .size(32.dp)
-                        .offset(x = -2.dp, y = 2.dp),
-
-                    ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.icon_pencil),
-                        contentDescription = null,
-                    )
-                }
-            }
-
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(364.dp)
-                    .padding(horizontal = 22.dp)
-                    .offset(y = (-38).dp)
-            ) {
-                // Твой фон карточки
-                Image(
-                    painter = painterResource(id = R.drawable.profile_background),
-                    contentDescription = null,
-                    modifier = Modifier.fillMaxWidth(),
-                    contentScale = ContentScale.Crop
-                )
-
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .offset(y = -32.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Spacer(modifier = Modifier.height(98.dp))
-                    Text(
-                        text = "Пользователь",
-                        style = MaterialTheme.typography.headlineMedium,
-                        color = AppColors.TextPrimary
-                    )
-
-                    Spacer(modifier = Modifier.height(8.dp))
-
-                    Text(
-                        text = "Гость",
-                        style = MaterialTheme.typography.bodyLarge,
-                        color = AppColors.TextSecondary
-                    )
-
-                    Spacer(modifier = Modifier.height(40.dp))
-
-                    ProfileMenuItem(
-                        icon = painterResource(R.drawable.icon_user),
-                        title = "Мой аккаунт",
-                        onClick = {})
-                    ProfileMenuItem(
-                        icon = painterResource(R.drawable.icons_door),
-                        title = "Настройки",
-                        onClick = {})
-                    ProfileMenuItem(
-                        icon = painterResource(R.drawable.question_circle),
-                        title = "Помощь",
-                        onClick = {})
-                    ProfileMenuItem(
-                        icon = painterResource(R.drawable.shield_user),
-                        title = "Конфиденциальность",
-                        onClick = {})
-                    ProfileMenuItem(
-                        icon = painterResource(R.drawable.icons_door),
-                        title = "Выйти",
-                        onClick = {})
-                }
-            }
+            CardWithAvatarAndForm()
         }
     }
 }
 
-
-
-
 @Composable
-fun ProfileMenuItem(
-    icon: Painter,
-    title: String,
-    onClick: () -> Unit
-) {
-    Row(
+fun CardWithAvatarAndForm() {
+    val avatarSize = 96.dp
+    val overlap = 2.dp
+
+    Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 8.dp, horizontal = 20.dp)
-            .clickable { onClick() },
-        verticalAlignment = Alignment.CenterVertically
+            .padding(horizontal = 22.dp),
+        shape = RoundedCornerShape(topStart = 22.dp, topEnd = 22.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.Transparent)
     ) {
-        Icon(
-            painter = icon,
-            contentDescription = null,
-            modifier = Modifier.size(24.dp)
-        )
-        Spacer(modifier = Modifier.width(16.dp))
-        Text(
-            text = title,
-            style = MaterialTheme.typography.bodyLarge,
-            color = AppColors.TextPrimary,
-            modifier = Modifier.weight(1f)
-        )
-        Icon(
-            Icons.Default.ChevronRight,
-            contentDescription = null,
-            tint = AppColors.Grey
-        )
+        Box {
+            Image(
+                painter = painterResource(R.drawable.profile_edit_background),
+                contentDescription = null,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(520.dp),
+                contentScale = ContentScale.FillWidth
+            )
+
+            Box(
+                modifier = Modifier
+                    .align(Alignment.TopCenter)
+                    .offset(y = -overlap)
+                    .size(avatarSize)
+                    .clip(CircleShape)
+                    .background(AppColors.LightGrey)
+                    .border(2.dp, Color.Transparent, CircleShape)
+            )
+
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 140.dp)
+                    .padding(horizontal = 24.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = "Выбрать фотографию",
+                    style = MaterialTheme.typography.titleMedium,
+                    color = MaterialTheme.colorScheme.primary
+                )
+
+                Spacer(modifier = Modifier.height(24.dp))
+
+                OutlinedTextField(
+                    value = "Аскарбеков Марлен",
+                    onValueChange = {},
+                    label = { Text("Полное имя") },
+                    modifier = Modifier.fillMaxWidth()
+                )
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                OutlinedTextField(
+                    value = "marlen.askarbekov@gmail.com",
+                    onValueChange = {},
+                    label = { Text("E-mail") },
+                    modifier = Modifier.fillMaxWidth()
+                )
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                Row(modifier = Modifier.fillMaxWidth()) {
+                    OutlinedTextField(value = "+996", onValueChange = {}, modifier = Modifier.width(80.dp))
+                    Spacer(modifier = Modifier.width(8.dp))
+                    OutlinedTextField(value = "701 392 423", onValueChange = {}, modifier = Modifier.weight(1f))
+                }
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        RadioButton(selected = false, onClick = {})
+                        Text("Женский")
+                    }
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        RadioButton(selected = true, onClick = {})
+                        Text("Мужской")
+                    }
+                }
+
+            }
+        }
     }
 }
-
 
 @Composable
 @Preview(showBackground = true)
