@@ -18,12 +18,12 @@ data class ProfileUiState(
 )
 
 @HiltViewModel
-class ProfileViewModel @Inject constructor(
-    private val userRepository: UserRepository
+open class ProfileViewModel @Inject constructor(
+   private val userRepository: UserRepository
 ) : ViewModel() {
     
     private val _uiState = MutableStateFlow(ProfileUiState())
-    val uiState: StateFlow<ProfileUiState> = _uiState.asStateFlow()
+    open val uiState: StateFlow<ProfileUiState> = _uiState.asStateFlow()
     
     private val currentUserId: String = "user1" // Мок ID
     

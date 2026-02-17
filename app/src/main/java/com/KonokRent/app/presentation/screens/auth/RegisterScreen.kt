@@ -10,6 +10,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -19,6 +20,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.airbnbclone.app.presentation.components.CustomButton
 import com.KonokRent.app.presentation.components.CustomTextField
+import com.airbnbclone.app.R
 import com.airbnbclone.app.presentation.components.SocialLoginButton
 import com.airbnbclone.app.presentation.components.AuthLogo
 import com.airbnbclone.app.presentation.theme.AppColors
@@ -149,17 +151,23 @@ fun RegisterScreen(
         Spacer(modifier = Modifier.height(24.dp))
         
         SocialLoginButton(
-            text = "Войти через Google",
+            icon = painterResource(id = R.drawable.flat_color_icons_google),
             onClick = { /* TODO */ },
-            backgroundColor = AppColors.GoogleBlue
+
         )
         
         Spacer(modifier = Modifier.height(12.dp))
         
         SocialLoginButton(
-            text = "Войти через Facebook",
+            icon = painterResource(id = R.drawable.icon_round_apple),
             onClick = { /* TODO */ },
-            backgroundColor = AppColors.FacebookBlue
+        )
+
+        Spacer(modifier = Modifier.height(12.dp))
+
+        SocialLoginButton(
+            icon = painterResource(id = R.drawable.logos_facebook),
+            onClick = { /* TODO */ },
         )
         
         Spacer(modifier = Modifier.height(24.dp))
