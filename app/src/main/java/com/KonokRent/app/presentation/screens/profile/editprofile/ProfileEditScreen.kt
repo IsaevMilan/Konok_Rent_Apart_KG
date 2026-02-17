@@ -19,8 +19,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
@@ -38,11 +37,12 @@ import com.KonokRent.app.presentation.theme.AirbnbCloneTheme
 import com.airbnbclone.app.R
 import com.airbnbclone.app.presentation.theme.AppColors
 
+
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfileEditScreen() {
     Box(modifier = Modifier.fillMaxSize()) {
 
-        // Фон-орнамент сверху
         Image(
             painter = painterResource(id = R.drawable.ornament_prifile_backgraund),
             contentDescription = null,
@@ -51,37 +51,6 @@ fun ProfileEditScreen() {
                 .align(Alignment.TopCenter),
             contentScale = ContentScale.FillWidth
         )
-        // Кнопки назад и сохранить — в углах экрана
-        IconButton(
-            onClick = { /* назад */ },
-            modifier = Modifier
-                .align(Alignment.TopStart)
-                .padding(top = 16.dp, start = 16.dp)
-                .size(48.dp)
-        ) {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_arrow_back),
-                contentDescription = "Назад",
-                tint = Color.Unspecified  // ← убираем tint, иконка будет как в файле
-            )
-        }
-
-        // Кнопка сохранить — справа сверху, без фона
-        IconButton(
-            onClick = { /* сохранить */ },
-            modifier = Modifier
-                .align(Alignment.TopEnd)
-                .padding(top = 16.dp, end = 16.dp)
-                .size(48.dp)
-        ) {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_done),
-                contentDescription = "Сохранить",
-                tint = Color.Unspecified  // ← как есть, без перекрашивания
-            )
-        }
-
-        // Основной контент
         Column(
             modifier = Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally
