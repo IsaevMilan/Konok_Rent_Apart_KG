@@ -40,7 +40,7 @@ fun MainScreen(navController: NavHostController) {
             when (selectedIndex) {
                 0 -> Text("Wishlist", modifier = Modifier.padding(16.dp))
                 1 -> Text("Messages", modifier = Modifier.padding(16.dp))
-                2 -> Text("Search", modifier = Modifier.padding(16.dp))
+                2 -> navController.navigate("search")
                 3 -> Text("Home", modifier = Modifier.padding(16.dp))
                 4 -> Text("Profile", modifier = Modifier.padding(16.dp))
             }

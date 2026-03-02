@@ -2,7 +2,8 @@ package com.KonokRent.app.domain.models
 
 data class Hotel(
     val id: String,
-    val  name: String,
+    val name: String,
+    val city: String,
     val feedbacksCount: Int,
     val rating: Double,
     val price: Int,
@@ -10,4 +11,5 @@ data class Hotel(
     val betsCount: Int,
     val roomsCount: Int,
     val bathCount: Int,
+    val photo: String
 )
