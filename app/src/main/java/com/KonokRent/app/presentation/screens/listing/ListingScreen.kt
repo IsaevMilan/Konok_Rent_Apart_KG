@@ -43,10 +43,16 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Devices
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.airbnbclone.app.domain.entities.Coordinates
+import com.airbnbclone.app.domain.entities.Host
+import com.airbnbclone.app.domain.entities.Listing
 import com.airbnbclone.app.presentation.components.CustomButton
 import com.airbnbclone.app.presentation.theme.AppColors
 
@@ -318,4 +324,283 @@ fun FeatureRow(icon: androidx.compose.ui.graphics.vector.ImageVector, text: Stri
         )
     }
 }
+
+@Preview(showBackground = true, name = "ListingScreen - Example", device = Devices.PIXEL_6)
+@Composable
+fun ListingScreenPreview() {
+    MaterialTheme {
+        ListingContent(
+            listing = Listing(
+                id = "abc123",
+                title = "Уютная квартира в центре Бишкека",
+                description = "Светлая и просторная 2-комнатная квартира в самом сердце города. Идеально подходит для туристов и командировок. Рядом метро, супермаркеты, кафе и парки. Полностью оборудована всем необходимым: Wi-Fi, стиральная машина, кухня, кондиционер.",
+                location = "Бишкек, ул. Советская, 45",
+                address = "ул. Советская 45, 720000",
+                price = 4500.0,
+                rating = 4.8,
+                reviewsCount = 127,
+                images = listOf(
+                    "https://example.com/image1.jpg",
+                    "https://example.com/image2.jpg",
+                    "https://example.com/image3.jpg"
+                ),
+                host = Host(
+                    id = "host_456",
+                    name = "Айбек",
+                    avatar = "https://example.com/avatar.jpg",
+                    joinedDate = System.currentTimeMillis() - 31536000000L * 2, // 2 года назад
+                    isSuperhost = true
+                ),
+                amenities = listOf("Wi-Fi", "Кухня", "Стиральная машина", "Кондиционер", "Парковка", "Лифт"),
+                propertyType = "Квартира",
+                bedrooms = 2,
+                bathrooms = 1,
+                maxGuests = 4,
+                coordinates = Coordinates(
+                    lat = 42.8768,
+                    lng = 74.6069  // координаты центра Бишкека
+                )
+            ),
+            isLoading = false,
+            onBack = {},
+            onShare = {},
+            onFavorite = {},
+            onBook = {},
+            navController = rememberNavController()
+        )
+    }
+}
+
+// Вынеси основной контент в ListingContent(...)
+@Composable
+private fun ListingContent(
+    listing: Listing,
+    isLoading: Boolean,
+    onBack: () -> Unit,
+    onShare: () -> Unit,
+    onFavorite: () -> Unit,
+    onBook: () -> Unit,
+    navController: NavController
+) {
+    if (isLoading) {
+        // loading
+    } else {
+        Column(modifier = Modifier.fillMaxSize()) {
+            // Image header
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(300.dp)
+                    .background(AppColors.LightGrey)
+            ) {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(
+                        Icons.Default.Home,
+                        contentDescription = null,
+                        modifier = Modifier.size(100.dp),
+                        tint = AppColors.Grey
+                    )
+                }
+
+                // Top bar
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    IconButton(
+                        onClick = { navController.popBackStack() },
+                        modifier = Modifier.background(
+                            MaterialTheme.colorScheme.surface.copy(alpha = 0.8f),
+                            CircleShape
+                        )
+                    ) {
+                        Icon(
+                            Icons.Default.ArrowBack,
+                            contentDescription = "Назад",
+                            tint = AppColors.White
+                        )
+                    }
+                    Row {
+                        IconButton(
+                            onClick = { /* TODO */ },
+                            modifier = Modifier.background(
+                                MaterialTheme.colorScheme.surface.copy(alpha = 0.8f),
+                                CircleShape
+                            )
+                        ) {
+                            Icon(
+                                Icons.Default.Share,
+                                contentDescription = "Поделиться",
+                                tint = AppColors.White
+                            )
+                        }
+                        Spacer(modifier = Modifier.width(8.dp))
+                        IconButton(
+                            onClick = { /* TODO */ },
+                            modifier = Modifier.background(
+                                MaterialTheme.colorScheme.surface.copy(alpha = 0.8f),
+                                CircleShape
+                            )
+                        ) {
+                            Icon(
+                                Icons.Default.FavoriteBorder,
+                                contentDescription = "В избранное",
+                                tint = AppColors.White
+                            )
+                        }
+                    }
+                }
+            }
+
+            // Content
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(16.dp)
+            ) {
+                // Title
+                Text(
+                    text = listing.title,
+                    style = MaterialTheme.typography.headlineMedium,
+                    color = AppColors.TextPrimary
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(
+                        Icons.Default.LocationOn,
+                        contentDescription = null,
+                        modifier = Modifier.size(16.dp),
+                        tint = AppColors.TextSecondary
+                    )
+                    Spacer(modifier = Modifier.width(4.dp))
+                    Text(
+                        text = listing.location,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = AppColors.TextSecondary
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                // Rating
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(
+                        Icons.Default.Star,
+                        contentDescription = null,
+                        tint = Color(0xFFFFC107),
+                        modifier = Modifier.size(20.dp)
+                    )
+                    Spacer(modifier = Modifier.width(4.dp))
+                    Text(
+                        text = listing.rating.toString(),
+                        style = MaterialTheme.typography.titleMedium
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    TextButton(onClick = {
+                        navController.navigate({})
+                    }) {
+                        Text(
+                            "(${listing.reviewsCount} отзывов)",
+                            color = AppColors.TextSecondary
+                        )
+                    }
+                }
+
+                Divider(modifier = Modifier.padding(vertical = 16.dp))
+
+                // Host info
+                Row {
+                    Surface(
+                        modifier = Modifier.size(64.dp),
+                        shape = CircleShape,
+                        color = AppColors.LightGrey
+                    ) {
+                        Box(contentAlignment = Alignment.Center) {
+                            Icon(
+                                Icons.Default.Person,
+                                contentDescription = null,
+                                modifier = Modifier.size(32.dp),
+                                tint = AppColors.Grey
+                            )
+                        }
+                    }
+                    Spacer(modifier = Modifier.width(16.dp))
+                    Column {
+                        Text(
+                            text = "Хозяин: ${listing.host.name}",
+                            style = MaterialTheme.typography.titleMedium
+                        )
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Text(
+                            text = "На Airbnb с ${
+                                listing.host.joinedDate?.let {
+                                    java.text.SimpleDateFormat(
+                                        "yyyy",
+                                        java.util.Locale.getDefault()
+                                    ).format(java.util.Date(it))
+                                } ?: "недавно"
+                            }",
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = AppColors.TextSecondary
+                        )
+                    }
+                }
+
+                Divider(modifier = Modifier.padding(vertical = 16.dp))
+
+                // Features
+                FeatureRow(Icons.Default.Bed, "${listing.bedrooms} спальни")
+                Spacer(modifier = Modifier.height(12.dp))
+                FeatureRow(Icons.Default.Bathtub, "${listing.bathrooms} ванная")
+                Spacer(modifier = Modifier.height(12.dp))
+                FeatureRow(Icons.Default.People, "До ${listing.maxGuests} гостей")
+                Spacer(modifier = Modifier.height(12.dp))
+                if (listing.amenities.contains("Wi-Fi")) {
+                    FeatureRow(Icons.Default.Wifi, "Wi-Fi")
+                }
+
+                Divider(modifier = Modifier.padding(vertical = 16.dp))
+
+                // Description
+                Text(
+                    text = "Описание",
+                    style = MaterialTheme.typography.titleLarge,
+                    color = AppColors.TextPrimary
+                )
+                Spacer(modifier = Modifier.height(12.dp))
+                Text(
+                    text = listing.description,
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = AppColors.TextSecondary
+                )
+
+                Spacer(modifier = Modifier.height(32.dp))
+
+                // Book button
+                CustomButton(
+                    text = "Забронировать за ${listing.price.toInt()} ₽/ночь",
+                    onClick = {  },
+                    modifier = Modifier.fillMaxWidth()
+                )
+
+                Spacer(modifier = Modifier.height(16.dp))
+            }
+        } ?: run {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(),
+                contentAlignment = Alignment.Center
+            ) {
+                Text("Жилье не найдено", color = AppColors.TextSecondary)
+            }
+        }
+    }
+}
+
 
