@@ -79,6 +79,7 @@ fun MainScreen(navController: NavHostController) {
                 2 -> SearchTabScreen()
                 3 -> MapScreen(navController = navController)
                 4 -> ProfileScreen(navController = navController)
+
             }
         }
     }

@@ -83,6 +83,8 @@ dependencies {
     // Hilt
     implementation("com.google.dagger:hilt-android:2.59.1")
     implementation("androidx.compose.foundation:foundation-layout:1.10.2")
+    implementation("androidx.compose.material3:material3:1.4.0")
+    implementation("androidx.compose.foundation:foundation-layout:1.10.3")
     kapt("com.google.dagger:hilt-compiler:2.59.1")
     implementation("androidx.hilt:hilt-navigation-compose:1.3.0")
 
