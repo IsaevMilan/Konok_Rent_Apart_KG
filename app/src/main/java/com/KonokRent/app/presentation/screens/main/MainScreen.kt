@@ -19,7 +19,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -37,14 +36,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.ImeAction.Companion.Search
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.R
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.KonokRent.app.domain.models.Hotel
@@ -92,14 +88,14 @@ fun MainScreen(navController: NavHostController) {
 fun SearchTabScreen() {
     val bishkekHotels = remember {
         listOf(
-            Hotel("1", "Бишкек, Inter Hotel", 20, 4.9, 2620, 200, 2, 2, 1),
-            Hotel("2", "Бишкек, Asia Mountains", 12, 4.8, 2300, 350, 2, 1, 1)
+            Hotel("1", "Бишкек, Inter Hotel", "20", 4, 26.20, 200, 2, 2, 1, 2, ""),
+            Hotel("2", "Бишкек, Asia Mountains", "12", 4, 23.00, 350, 2, 1, 1, 2,"")
         )
     }
     val narynHotels = remember {
         listOf(
-            Hotel("3", "Нарын, Mountain View", 8, 4.7, 2100, 500, 2, 1, 1),
-            Hotel("4", "Нарын, Guest House", 15, 4.6, 1800, 600, 1, 1, 1)
+            Hotel("3", "Нарын, Mountain View", "", 4, 21.00, 500, 2, 1, 1, 1,""),
+            Hotel("4", "Нарын, Guest House", "", 4, 18.00, 600, 1, 1, 1, 1,"")
         )
     }
 
