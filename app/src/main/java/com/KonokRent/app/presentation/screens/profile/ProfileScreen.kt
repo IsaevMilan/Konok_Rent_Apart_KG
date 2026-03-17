@@ -13,7 +13,9 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -29,6 +31,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -49,132 +52,109 @@ fun ProfileScreen(
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text("Профиль") },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.background
-                )
-            )
-        }
-    ) { paddingValues ->
-        if (uiState.isLoading) {
-            Box(modifier = Modifier.fillMaxSize()) {
+//        if (uiState.isLoading) { пока убирем до реальной загрузки данных
+    Box(modifier = Modifier.fillMaxSize()) {
 
+        Image(
+            painter = painterResource(id = R.drawable.ornament_prifile_backgraund),
+            contentDescription = null,
+            modifier = Modifier.fillMaxWidth(),
+            contentScale = ContentScale.Crop
+        )
+
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+
+            Spacer(modifier = Modifier.height(108.dp))
+
+            // Аватар
+            Box(
+                modifier = Modifier
+                    .padding(bottom = 8.dp)
+                    .size(102.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Surface(
+                    modifier = Modifier.size(102.dp),
+                    shape = CircleShape,
+                    color = AppColors.LightGrey
+                ) {
+                }
+
+                // кнопка редактирования
+                FloatingActionButton(
+                    onClick = { /* TODO */ },
+                    modifier = Modifier
+                        .align(Alignment.BottomEnd)
+                        .size(32.dp)
+                        .offset(x = -2.dp, y = 2.dp),
+
+                    ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.icon_pencil),
+                        contentDescription = null,
+                    )
+                }
+            }
+
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(384.dp)
+                    .padding(horizontal = 22.dp)
+                    .offset(y = (-48).dp)
+            ) {
+                // Твой фон карточки
                 Image(
-                    painter = painterResource(id = R.drawable.ornament_prifile_backgraund),
+                    painter = painterResource(id = R.drawable.profile_background),
                     contentDescription = null,
                     modifier = Modifier.fillMaxWidth(),
                     contentScale = ContentScale.Crop
                 )
 
                 Column(
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(384.dp)
+                        .offset( y=-32.dp)
+                        .verticalScroll(rememberScrollState()),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
+                    Spacer(modifier = Modifier.height(96.dp))
+                    Text(
+                        text = "Пользователь",
+                        style = MaterialTheme.typography.headlineMedium,
+                        color = AppColors.TextPrimary
+                    )
 
-                    Spacer(modifier = Modifier.height(108.dp))
+                    Spacer(modifier = Modifier.height(8.dp))
 
-                    // Аватар
-                    Box(
-                        modifier = Modifier
-                            .padding(bottom = 8.dp)
-                            .size(102.dp),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Surface(
-                            modifier = Modifier.size(102.dp),
-                            shape = CircleShape,
-                            color = AppColors.LightGrey
-                        ) {
-                        }
+                    Text(
+                        text = "Гость",
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = AppColors.TextSecondary
+                    )
 
-                        // кнопка редактирования
-                        FloatingActionButton(
-                            onClick = { /* TODO */ },
-                            modifier = Modifier
-                                .align(Alignment.BottomEnd)
-                                .size(32.dp)
-                                .offset(x = -2.dp, y = 2.dp),
+                    Spacer(modifier = Modifier.height(30.dp))
 
-                            ) {
-                            Image(
-                                painter = painterResource(id = R.drawable.icon_pencil),
-                                contentDescription = null,
-                            )
-                        }
-                    }
-
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(364.dp)
-                            .padding(horizontal = 22.dp)
-                            .offset(y = (-38).dp)
-                    ) {
-                        // Твой фон карточки
-                        Image(
-                            painter = painterResource(id = R.drawable.profile_background),
-                            contentDescription = null,
-                            modifier = Modifier.fillMaxWidth(),
-                            contentScale = ContentScale.Crop
-                        )
-
-                        Column(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .offset(y = -32.dp),
-                            horizontalAlignment = Alignment.CenterHorizontally
-                        ) {
-                            Spacer(modifier = Modifier.height(98.dp))
-                            Text(
-                                text = "Пользователь",
-                                style = MaterialTheme.typography.headlineMedium,
-                                color = AppColors.TextPrimary
-                            )
-
-                            Spacer(modifier = Modifier.height(8.dp))
-
-                            Text(
-                                text = "Гость",
-                                style = MaterialTheme.typography.bodyLarge,
-                                color = AppColors.TextSecondary
-                            )
-
-                            Spacer(modifier = Modifier.height(40.dp))
-
-                            ProfileMenuItem(
-                                icon = painterResource(R.drawable.icon_user),
-                                title = "Мой аккаунт",
-                                onClick = {})
-                            ProfileMenuItem(
-                                icon = painterResource(R.drawable.icons_door),
-                                title = "Настройки",
-                                onClick = {})
-                            ProfileMenuItem(
-                                icon = painterResource(R.drawable.question_circle),
-                                title = "Помощь",
-                                onClick = {})
-                            ProfileMenuItem(
-                                icon = painterResource(R.drawable.shield_user),
-                                title = "Конфиденциальность",
-                                onClick = {})
-                            ProfileMenuItem(
-                                icon = painterResource(R.drawable.icons_door),
-                                title = "Выйти",
-                                onClick = {})
-                        }
-                    }
+                    ProfileMenuItem(icon = painterResource(R.drawable.icon_user), title = "Мой аккаунт",color = AppColors.TextPrimary, onClick = {})
+                    ProfileMenuItem(icon = painterResource(R.drawable.settings), title = "Настройки", color = AppColors.TextPrimary, onClick = {})
+                    ProfileMenuItem(icon = painterResource(R.drawable.question_circle), title = "Помощь", color = AppColors.TextPrimary, onClick = {})
+                    ProfileMenuItem(icon = painterResource(R.drawable.shield_user), title = "Конфиденциальность", color = AppColors.TextPrimary, onClick = {})
+                    ProfileMenuItem(icon = painterResource(R.drawable.icons_door), title = "Выйти", color = AppColors.Accent, onClick = {})
                 }
             }
         }
     }
+//    }
 }
 
 @Composable
 fun ProfileMenuItem(
     icon: Painter,
+    color: Color,
     title: String,
     onClick: () -> Unit
 ) {
@@ -188,13 +168,14 @@ fun ProfileMenuItem(
         Icon(
             painter = icon,
             contentDescription = null,
-            modifier = Modifier.size(24.dp)
+            modifier = Modifier.size(24.dp),
+            tint = color
         )
         Spacer(modifier = Modifier.width(16.dp))
         Text(
             text = title,
             style = MaterialTheme.typography.bodyLarge,
-            color = AppColors.TextPrimary,
+            color = color,
             modifier = Modifier.weight(1f)
         )
         Icon(
@@ -259,9 +240,9 @@ fun ProfileScreenContent() {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(364.dp)
+                    .height(384.dp)
                     .padding(horizontal = 22.dp)
-                    .offset(y = (-38).dp)
+                    .offset(y = (-48).dp)
             ) {
                 // Твой фон карточки
                 Image(
@@ -274,10 +255,12 @@ fun ProfileScreenContent() {
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .offset( y=-32.dp),
+                        .height(384.dp)
+                        .offset( y=-32.dp)
+                        .verticalScroll(rememberScrollState()),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Spacer(modifier = Modifier.height(98.dp))
+                    Spacer(modifier = Modifier.height(96.dp))
                     Text(
                         text = "Пользователь",
                         style = MaterialTheme.typography.headlineMedium,
@@ -292,13 +275,13 @@ fun ProfileScreenContent() {
                         color = AppColors.TextSecondary
                     )
 
-                    Spacer(modifier = Modifier.height(40.dp))
+                    Spacer(modifier = Modifier.height(30.dp))
 
-                    ProfileMenuItem(icon = painterResource(R.drawable.icon_user), title = "Мой аккаунт", onClick = {})
-                    ProfileMenuItem(icon = painterResource(R.drawable.icons_door), title = "Настройки", onClick = {})
-                    ProfileMenuItem(icon = painterResource(R.drawable.question_circle), title = "Помощь", onClick = {})
-                    ProfileMenuItem(icon = painterResource(R.drawable.shield_user), title = "Конфиденциальность", onClick = {})
-                    ProfileMenuItem(icon = painterResource(R.drawable.icons_door), title = "Выйти", onClick = {})
+                    ProfileMenuItem(icon = painterResource(R.drawable.icon_user), title = "Мой аккаунт",color = AppColors.TextPrimary, onClick = {})
+                    ProfileMenuItem(icon = painterResource(R.drawable.settings), title = "Настройки", color = AppColors.TextPrimary, onClick = {})
+                    ProfileMenuItem(icon = painterResource(R.drawable.question_circle), title = "Помощь", color = AppColors.TextPrimary, onClick = {})
+                    ProfileMenuItem(icon = painterResource(R.drawable.shield_user), title = "Конфиденциальность", color = AppColors.TextPrimary, onClick = {})
+                    ProfileMenuItem(icon = painterResource(R.drawable.icons_door), title = "Выйти", color = AppColors.Accent, onClick = {})
                 }
             }
         }

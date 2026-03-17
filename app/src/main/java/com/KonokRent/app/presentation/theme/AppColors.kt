@@ -10,7 +10,7 @@ object AppColors {
     val BackgroundDark = Color(0xFF121212)
     // Для совместимости с Flutter версией
     val TextPrimary = Color(0xFF000000)
-    val TextSecondary = Color(0xFF666666)
+    val TextSecondary = Color(0xFF000000)
     
     // Дополнительные цвета
 

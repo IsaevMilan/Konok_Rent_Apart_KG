@@ -26,7 +26,7 @@ fun AirbnbBottomBar(
     onItemSelected: (Int) -> Unit
 ) {
     NavigationBar(
-        containerColor = Color.White,
+        containerColor = Color.Transparent,
         tonalElevation = 10.dp,
     ) {
 
